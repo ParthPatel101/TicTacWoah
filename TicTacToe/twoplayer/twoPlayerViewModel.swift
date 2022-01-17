@@ -76,5 +76,4 @@ final class twoPlayerViewModel: ObservableObject  {
         human1turn = true
     }
     
-    
 }
