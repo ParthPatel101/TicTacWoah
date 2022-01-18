@@ -15,15 +15,15 @@ struct FormView: View {
         NavigationView {
             Form {
                 Section("Bio") {
-                    TextField("First Name", text: $viewModel.firstName)
-                    TextField("Last Name", text: $viewModel.lastName)
-                    DatePicker("Birthday", selection: $viewModel.birthDate, displayedComponents: .date)
+                    TextField("First Name", text: $viewModel.user.firstName)
+                    TextField("Last Name", text: $viewModel.user.lastName)
+                    DatePicker("Birthday", selection: $viewModel.user.birthDate, displayedComponents: .date)
                 }
                 Section("Actions") {
-                    Toggle("Send Newsletter?", isOn: $viewModel.sendNews)
+                    Toggle("Send Newsletter?", isOn: $viewModel.user.sendNews)
                         .toggleStyle(SwitchToggleStyle(tint: Color.pink))
-                    Stepper("Followers", value: $viewModel.followers, in: 1...1000)
-                    Text("You have \(viewModel.followers) followers")
+                    Stepper("Followers", value: $viewModel.user.followers, in: 1...1000)
+                    Text("You have \(viewModel.user.followers) followers")
                     Link("Terms of Service", destination: URL(string: "https://www.youtube.com")!)
                 }
                 NavigationLink("Continue", destination: HomeView())
@@ -34,35 +34,8 @@ struct FormView: View {
                     Button {
                         hideKeyBoard()
                     } label: {
-                        Image(systemName: "house")
+                        Image(systemName: "keyboard.chevron.compact.down")
                     }
-                }
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    Button {
-                        hideKeyBoard()
-                    } label: {
-                        Image(systemName: "house")
-                    }
-                    Spacer()
-                    Button {
-                        hideKeyBoard()
-                    } label: {
-                        Image(systemName: "camera")
-                    }
-                    Spacer()
-                    Button {
-                        hideKeyBoard()
-                    } label: {
-                        Image(systemName: "gear")
-                    }
-                    Spacer()
-                    Button {
-                        hideKeyBoard()
-                    } label: {
-                        Image(systemName: "person.circle")
-                    }
-                    Spacer()
                 }
             }
         }.accentColor(.pink)
